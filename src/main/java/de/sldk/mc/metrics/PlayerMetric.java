@@ -1,5 +1,6 @@
 package de.sldk.mc.metrics;
 
+import com.google.common.collect.ImmutableList;
 import io.prometheus.client.Collector;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public abstract class PlayerMetric extends Metric {
     @Override
     public final void doCollect() {
 
-        for (OfflinePlayer player : Bukkit.getOfflinePlayers()) {
+        for (OfflinePlayer player : ImmutableList.copyOf(Bukkit.getOnlinePlayers())) {
             collect(player);
         }
     }

@@ -67,10 +67,8 @@ public class PlayerStatistics extends PlayerMetric {
 
 			return true;
 		} catch (Exception e) {
-			String message =
-					String.format("%s: Could not load statistics for player '%s'", loader.getClass().getSimpleName(),
-							player.getUniqueId());
-			logger.log(Level.FINE, message, e);
+			logger.log(Level.FINE, () -> String.format("%s: Could not load statistics for player '%s'", loader.getClass().getSimpleName(),
+					player.getUniqueId()));
 			return false;
 		}
 	}
